@@ -20,5 +20,5 @@ This script detects search query autocorrect and redirects to the results for yo
 ## Disclaimer
 This script might not work if the Instant Search feature is enabled. It is strongly recommended that you disable the Instant Search feature while using this script.
 
-## 作者
+## Author
 [たかだか。(TakaDaka.)](https://twitter.com/djtkdk_086969)
