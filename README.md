@@ -5,6 +5,8 @@ User script for Greasemonkey / Tampermonkey which disables Google Search Autocor
 
 ## Summary
 
+[日本語版のREADME.mdはこちら](README.ja.md)
+
 Google Autocorrect Blocker is a user script for Greasemonkey / Tampermonkey which disables Google Search Autocorrect.
 
 The Google Search sometimes auto-corrects your search query like:
@@ -13,7 +15,7 @@ Showing results for: _localhost_
 
 Search instead for: localhsot
 
-![Google Search Autocorrect](img/autocorrect.ja.png "Google Search Autocorrect")
+[![Google Search Autocorrect](img/autocorrect.ja.thumb.png)](img/autocorrect.ja.png)
 
 This script detects search query autocorrect and redirects to the results for your original search query by detecting the "Search instead for \*" link (`a.spell_orig`)
 
