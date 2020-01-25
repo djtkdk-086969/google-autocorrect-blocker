@@ -13,7 +13,7 @@
 // @exclude        *://mail.*
 // @exclude        *://productforums.*
 // @exclude        *://maps.*
-// @version        0.0.0.007
+// @version        0.0.0.008
 // @grant          none
 // @compatible     firefox
 // @compatible     chrome
@@ -21,8 +21,15 @@
 
 (function() {
     console.log("GAB " + GM_info.script.version + " Started.");
-    var spell_orig = document.querySelector("p.sp_cnt > a.spell_orig");
-    if(spell_orig !== null) {
+    var targetSelector = [
+        "p.sp_cnt > a.spell_orig",
+        "#fprs > a.spell_orig"
+    ];
+    var spell_orig = null;
+    if(targetSelector.some( (e) => {
+        spell_orig = document.querySelector("#fprs > a.spell_orig");
+        return (spell_orig !== null);
+    })) {
         console.log("GAB: Autocorrect detected!");
         var current_url_split = location.href.split("/");
         var autocorrect_orig_url = spell_orig.getAttribute("href");
@@ -33,6 +40,9 @@
             console.log("GAB: nfpr=1 is ineffective for this search keyword. Aborting.");
         } else {
             console.log("GAB: Redirecting to your original search query...");
+            let e = document.createElement("span");
+            e.textContent = "元の検索キーワードによる検索結果に移動しています...";
+            spell_orig.parentElement.appendChild(e);
             location.href = new_url;
         }
     } else {
