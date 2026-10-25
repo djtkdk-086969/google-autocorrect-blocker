@@ -1,11 +1,11 @@
 // ==UserScript==
-// @author         たかだか。(TakaDaka.)
+// @author         たかだか。 / TKDK.
 // @name           Google Autocorrect Blocker
 // @name:en        Google Autocorrect Blocker
 // @namespace      https://twitter.com/djtkdk_086969
 // @description    Googleの検索語句自動訂正を無効化します。
 // @description:en Disables Google Search Autocorrect.
-// @include        *://*.google.*/*
+// @include        *://*.google.tld/*
 // @exclude        *tbm=shop*
 // @exclude        *tbm=isch*
 // @exclude        *tbm=vid*
@@ -13,7 +13,8 @@
 // @exclude        *://mail.*
 // @exclude        *://productforums.*
 // @exclude        *://maps.*
-// @version        0.0.0.008
+// @exclude        *://*.google.tld/maps/*
+// @version        0.0.0.010
 // @grant          none
 // @compatible     firefox
 // @compatible     chrome
@@ -22,12 +23,13 @@
 (function() {
     console.log("GAB " + GM_info.script.version + " Started.");
     var targetSelector = [
+        "#fprs *.Pqkn2e",
         "p.sp_cnt > a.spell_orig",
         "#fprs > a.spell_orig"
     ];
     var spell_orig = null;
     if(targetSelector.some( (e) => {
-        spell_orig = document.querySelector("#fprs > a.spell_orig");
+        spell_orig = document.querySelector("#fprs > a.spell_orig, #fprs *.Pqkn2e a");
         return (spell_orig !== null);
     })) {
         console.log("GAB: Autocorrect detected!");
